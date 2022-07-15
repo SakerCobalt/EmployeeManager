@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/EmployeeManager.styles.css" asp-append-version="true" />
 </head>
 <body>
-   <h1>Employee Manager</h1>
+   <h1>Employee Manager Razor Pages</h1>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -19,7 +19,7 @@
     @if (User.Identity.IsAuthenticated)
     {
         <h2>You are signed in as @User.Identity.Name</h2>
-        <form asp-controller="Security" asp-action="SignOut" method="post">
+        <form asp-page="/Security/SignOut" method="post">
             <button type="submit">Sign out</button>
         </form>
 

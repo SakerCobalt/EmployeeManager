@@ -1,17 +1,21 @@
 ﻿@model Employee
 
-<h2>Insert New Employee</h2>
-<h3 class="message">@ViewBag.Message</h3>
+<h2>Delete An Employee</h2>
 
-<form asp-controller="EmployeeManager" asp-action="Insert" method="post">
+<h3 class="message">
+    Warning: You are about to delete an employee record!
+</h3>
+
+<form asp-controller="EmployeeManager" asp-action="Delete" method="post">
+    <input type="hidden" asp-for="EmployeeID" />
+
     <table border="0">
         <tr>
             <td class="right">
-                <label asp-for="FirstName"></label>
+                <label asp-for="EmployeeID"></label>
             </td>
             <td>
-                <input type="text" asp-for="FirstName" />
-                <span asp-validation-for="FirstName" class="message"></span>
+                @Model.EmployeeID
             </td>
         </tr>
         <tr>
@@ -19,8 +23,23 @@
                 <label asp-for="LastName"></label>
             </td>
             <td>
-                <input type="text" asp-for="LastName" />
-                <span asp-validation-for="LastName" class="message"></span>
+                @Model.LastName
+            </td>
+        </tr>
+        <tr>
+            <td class="right">
+                <label asp-for="FirstName"></label>
+            </td>
+            <td>
+                @Model.FirstName
+            </td>
+        </tr>
+        <tr>
+            <td class="right">
+                <label asp-for="LastName"></label>
+            </td>
+            <td>
+                @Model.LastName
             </td>
         </tr>
         <tr>
@@ -28,8 +47,7 @@
                 <label asp-for="Title"></label>
             </td>
             <td>
-                <input type="text" asp-for="Title" />
-                <span asp-validation-for="Title" class="message"></span>
+                @Model.Title
             </td>
         </tr>
         <tr>
@@ -37,28 +55,23 @@
                 <label asp-for="BirthDate"></label>
             </td>
             <td>
-                <input type="date" asp-for="BirthDate" />
-                <span asp-validation-for="BirthDate" class="message"></span>
+                @Model.BirthDate.ToString("dd MMMM yyyy")
             </td>
         </tr>
-        <tr>
+         <tr>
             <td class="right">
                 <label asp-for="HireDate"></label>
             </td>
             <td>
-                <input type="date" asp-for="HireDate" />
-                <span asp-validation-for="HireDate" class="message"></span>
+                @Model.HireDate.ToString("dd MMMM yyyy")
             </td>
         </tr>
-        <tr>
+         <tr>
             <td class="right">
                 <label asp-for="Country"></label>
             </td>
             <td>
-                <select asp-for="Country" asp-items="@ViewBag.Countries">
-                    <option value="">Please select</option>
-                </select>
-                <span asp-validation-for="Country" class="message"></span>
+                @Model.Country
             </td>
         </tr>
         <tr>
@@ -66,16 +79,15 @@
                 <label asp-for="Notes"></label>
             </td>
             <td>
-                <textarea asp-for="Notes" rows="5" cols="40"></textarea>
-                <span asp-validation-for="Notes" class="message"></span>
+                @Model.Notes
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <button type="submit">Save</button>
+                <button type="submit">Delete</button>
             </td>
         </tr>
     </table>
 </form>
-<br />
+
 <a asp-controller="EmployeeManager" asp-action="List">Back To Employee Listing</a>
