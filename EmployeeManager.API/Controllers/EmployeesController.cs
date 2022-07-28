@@ -39,6 +39,7 @@ namespace EmployeeManager.API.Controllers
         }
 
         //URL to call this method: localhost/api/employees/1
+        //Even though we are not using the id in the function, it is needed to properly construct the URL for put
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Employee emp)
         {
